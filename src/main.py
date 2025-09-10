@@ -69,8 +69,10 @@ def get_gaze_ratio(eye_points, facial_landmarks) :
         right_side_white = cv2.countNonZero(right_side_threshold)
         
         
-        
-        gaze_ratio = left_side_white / right_side_white
+        if right_side_white == 0:
+            gaze_ratio = 1  # hoặc một giá trị mặc định phù hợp
+        else:
+            gaze_ratio = left_side_white / right_side_white
     
         return gaze_ratio
 
